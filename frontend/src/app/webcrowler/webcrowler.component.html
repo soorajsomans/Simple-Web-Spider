@@ -1,0 +1,30 @@
+
+  <div class="container">
+  <form (ngSubmit)="!searchForm.invalid && getMessage()" #searchForm="ngForm">
+  <div class="input-group mb-3">
+    <input type="text" name="fileName"  placeholder="Enter url here" [(ngModel)]="fileName" class="form-control" required="required" #filename="ngModel"  aria-describedby="basic-addon2" >
+    <div class="input-group-append">
+      <button class="btn  btn-success" type="submit">Search</button>
+    </div>
+  </div>
+</form>
+</div>
+
+  <div *ngIf="crawledData" class="container table-responsive" style="overflow-x:auto;">
+    <table class="table table-hover table-striped">
+      <thead  class="thead-dark">
+        <tr>
+        <th>Title</th>
+        <th>Summary</th>
+        <th>Links</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let column of crawledData; let in = index">
+        <td>{{crawledData[in][0]}}</td>
+        <td>{{crawledData[in][1]}}</td>
+        <td><a href="{{crawledData[in][2]}}" target="_blank">{{crawledData[in][2]}}</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
